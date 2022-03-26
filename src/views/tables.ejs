@@ -1,0 +1,42 @@
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Kullanıcı Tablosu</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="example" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Ad</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Ad</th>
+                        <th>Email</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <%- include('./partials/_table_line')  %> 
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script id="rendered-js" type="module">
+    import datatable from 'https://cdn.skypack.dev/datatable';
+    import "https://cdn.datatables.net/plug-ins/1.11.5/sorting/turkish-string.js"
+    $(document).ready(function () {
+        $('#example').dataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.11.5/i18n/tr.json"
+            },
+            columnDefs: [
+         { type: 'turkish', targets: '_all' }
+     ]            
+        });
+    });
+</script>
