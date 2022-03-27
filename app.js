@@ -58,7 +58,7 @@ app.use((req, res, next) => {
 const errorRouter = require('./src/router/404_error');
 app.use('/admin', admin_router);
 app.use('/', app_router);
-app.use(errorRouter);
+// app.use(errorRouter);
 
 
 sequelize.sync();

@@ -64,8 +64,8 @@ const forgetPost = async (req, res, next) => {
                 let transporter = nodemailer.createTransport({
                     service: 'gmail',
                     auth: {
-                        user: process.env.GMAIL_USER,
-                        pass: process.env.GMAIL_PASSWORD
+                        user: "nodejsdersleri2757@gmail.com" ,
+                        pass: "nodejsdersleri2757",
                     }
                 });
                 await transporter.sendMail({
