@@ -18,7 +18,7 @@ const Missions = sequelize.define('mission_table', {
     description: {
         type: Sequelize.STRING,
     },
-    DesStatus: {
+    isComplete: {
         type: Sequelize.BOOLEAN,
         defaultValue:false
     },

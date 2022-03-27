@@ -50,10 +50,24 @@ const missionList = async (req, res, next) => {
             const complated = new Array();
             const notComplated = new Array();
             mission_list.forEach(element => {
-                if (!element.DesStatus) {
-                    notComplated.push(element);
+                if (!element.isComplete) {
+                    let user = {
+                        id: element.id,
+                        title: element.title,
+                        description: element.description,
+                        isComplete: element.isComplete,
+                        createdAt: element.createdAt
+                    }
+                    notComplated.push(user);
                 } else {
-                    complated.push(element);
+                    let user = {
+                        id: element.id,
+                        title: element.title,
+                        description: element.description,
+                        isComplete: element.isComplete,
+                        createdAt: element.createdAt
+                    }
+                    complated.push(user);
                 }
             });
             res.json({
@@ -98,7 +112,7 @@ const missionIsCompleted = async (req, res, next) => {
             res.json({ message: 'Not bulunamadı', status: false });
         } else {
             const update_user = await _user.update({
-                DesStatus: !_user.DesStatus
+                isComplete: !_user.isComplete
             })
             if (!update_user) {
                 res.json({ message: 'Notun durumu değiştirilirken bir hata oluştu', status: false })
