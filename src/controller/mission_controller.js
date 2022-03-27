@@ -143,7 +143,7 @@ const missionSearch = async (req, res, next) => {
             const complated = new Array();
             const notComplated = new Array();
             searchList.forEach(element => {
-                if (!element.DesStatus) {
+                if (!element.isComplete) {
                     const user = {
                         id: element.id,
                         title: element.title,

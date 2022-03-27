@@ -110,7 +110,7 @@ const dashboard = async (req, res, next) => {
         });
         let complatedMission = 0;
         mission.forEach(element => {
-            if (element.DesStatus == true) {
+            if (element.isComplete == true) {
                 complatedMission++;
             }
         });
@@ -145,7 +145,7 @@ const dashboardData = async (req, res, next) => {
         });
         let complatedMission = 0;
         mission.forEach(element => {
-            if (element.DesStatus == true) {
+            if (element.isComplete == true) {
                 complatedMission++;
             }
         });
