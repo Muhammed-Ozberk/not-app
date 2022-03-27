@@ -3,6 +3,8 @@ const AdminUser = require('../model/admin_user_model');
 const bcrypt = require('bcrypt');
 const nodemailer = require('nodemailer');
 const jwt = require('jsonwebtoken');
+const { google } = require("googleapis");
+const OAuth2 = google.auth.OAuth2;
 
 
 const login = (req, res, next) => {
@@ -61,11 +63,24 @@ const forgetPost = async (req, res, next) => {
 
                 //MAIL GONDERME ISLEMLERI
                 const url = process.env.WEB_SITE_URL + 'admin/reset-password/' + _user.id + "/" + jwtToken;
+                const oauth2Client = new OAuth2(
+                    process.env.GOCLO_CLIENT_ID,
+                    process.env.GOCLO_CLIENT_SECRET, 
+                    process.env.GOCLO_REDIRECT_URI
+                );
+                oauth2Client . setCredentials({ 
+                    refresh_token:  process.env.GOCLO_REFRESH_TOKEN
+               }); 
+               const accessToken = oauth2Client.getAccessToken()
                 let transporter = nodemailer.createTransport({
                     service: 'gmail',
                     auth: {
-                        user: "nodejsdersleri2757@gmail.com" ,
-                        pass: "nodejsdersleri2757",
+                        type :  "OAuth2", 
+                        user :  process.env.GMAIL_USER, 
+                        clientId : process.env.GOCLO_CLIENT_ID, 
+                        clientSecret :  process.env.GOCLO_CLIENT_SECRET, 
+                        refreshToken :  process.env.GOCLO_REFRESH_TOKEN, 
+                        accessToken: accessToken 
                     }
                 });
                 await transporter.sendMail({
