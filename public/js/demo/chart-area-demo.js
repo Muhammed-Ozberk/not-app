@@ -3,7 +3,7 @@ Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,Bli
 Chart.defaults.global.defaultFontColor = '#858796';
 axios({
   method: 'GET',
-  url: 'http://localhost:3000/admin/chartsData',
+  url: 'http://nottapp.herokuapp.com/admin//chartsData',
 }).then(response => chartData(response.data.monthsData))
   .catch(hata => console.log("axios catch =>"+hata))
 
