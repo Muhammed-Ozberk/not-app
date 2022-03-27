@@ -60,6 +60,7 @@ app.use('/admin', admin_router);
 app.use('/', app_router);
 app.use(errorRouter);
 
+
 sequelize.sync();
 
 
