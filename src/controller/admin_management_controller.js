@@ -158,10 +158,6 @@ const dashboardData = async (req, res, next) => {
     }
 }
 
-const errorNotFound = (req, res, next) => {
-    res.render('404_error', { layout: './layouts/home_layout.ejs', title: 'Sayfa Bulunamadı' });
-}
-
 const logout = (req, res, next) => {
     req.session.destroy((error) => {
         res.clearCookie('connect.sid');
@@ -177,7 +173,6 @@ module.exports = {
     chartsData,
     dashboard,
     dashboardData,
-    errorNotFound,
     logout,
 
 }

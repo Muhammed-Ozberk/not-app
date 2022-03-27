@@ -27,6 +27,4 @@ router.get('/dashboard-data', authMiddleware.oturumAcilmis, adminManagementContr
 
 router.post('/logout', authMiddleware.oturumAcilmis, adminManagementController.logout);
 
-router.get(authMiddleware.oturumAcilmis, adminManagementController.errorNotFound);
-
 module.exports = router;
